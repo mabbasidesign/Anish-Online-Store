@@ -18,7 +18,7 @@ namespace Anish.Controllers
             employeeList.Add(new Employee { EmployeeId = 1, Name = "Mohsen", Department = "IT" });
             employeeList.Add(new Employee { EmployeeId = 2, Name = "John", Department = "HR" });
             employeeList.Add(new Employee { EmployeeId = 3, Name = "Smith", Department = "Sales" });
-            employeeList.Add(new Employee { EmployeeId = 4, Name = "Bill", Department = "Marketing" });
+            employeeList.Add(new Employee { EmployeeId = 4, Name = "Bill", Department = "" });
 
             //ViewBag.Name = "Mohsen";
 
@@ -34,5 +34,22 @@ namespace Anish.Controllers
 
             return View(employeeList);
         }
+
+        public ActionResult Map()
+        {
+            AnishEntities1 db = new AnishEntities1();
+            Employee employee = db.Employees.SingleOrDefault(x => x.EmployeeId == 1);
+
+            EmployeeViewModel employeeVM = new EmployeeViewModel();
+
+            employeeVM.EmployeeId = employee.EmployeeId;
+            employeeVM.DepartmentId = employee.DepartmentId;
+            employeeVM.Name = employee.Name;
+            employeeVM.Address = employee.Address;
+
+            return View(employeeVM);
+        }
+
+
     }
 }

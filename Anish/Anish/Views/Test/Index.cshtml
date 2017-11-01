@@ -9,28 +9,30 @@
 
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
-<table class="table table-hover">
-    <tr>
-        <td>Id</td>
-        <td>Name</td>
-        <td>Department</td>
-    </tr>
-    <tbody>
-        @if (Model != null)
-        {
-            foreach (var item in Model)
+<div class="container" style="width:60%;margin-top:20px">
+    <table class="table table-hover">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Department</td>
+        </tr>
+        <tbody>
+            @if (Model != null)
             {
-                <tr>
-                    <td>@item.EmployeeId</td>
-                    <td>@item.Name</td>
-                    <td>@item.Department</td>
-                </tr>
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Department</td>
+                    </tr>
+                }
             }
-        }
-        
-    </tbody>
-</table>
 
+        </tbody>
+    </table>
+
+</div>
 @*<table class="table table-striped">
     <tr>
         <th>List Name</th>
