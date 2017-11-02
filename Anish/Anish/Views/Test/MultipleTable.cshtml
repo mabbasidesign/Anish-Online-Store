@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Anish.Models.EmployeeViewModel>
+@{
+    ViewBag.Title = "MultipleTable";
+    Layout = null;
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="container" style="width:75%;margin-top:40px">
+    <h2>MultipleTable</h2>
+    <table class="table table-condensed">
+        <tr>
+            <th>Employee Id</th>
+            <th>Employee Name</th>
+            <th>Employee Address</th>
+            <th>Department Id</th>
+            <th>Department Name</th>
+        </tr>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.DepartmentId</td>
+                        <td>@item.DepartmentName</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

@@ -50,6 +50,22 @@ namespace Anish.Controllers
             return View(employeeVM);
         }
 
+        public ActionResult MultipleTable()
+        {
+            AnishEntities1 db = new AnishEntities1();
+            List<Employee> employeeList = db.Employees.ToList();
+
+            var employeeVM = new EmployeeViewModel();
+            var employeeVmList = employeeList.Select(x => new EmployeeViewModel
+            {
+                Name = x.Name,
+                Address = x.Address,
+                EmployeeId = x.EmployeeId,
+                DepartmentId = x.DepartmentId,
+                DepartmentName = x.Department1.Name}).ToList();
+
+            return View(employeeVmList);
+        }
 
     }
 }
