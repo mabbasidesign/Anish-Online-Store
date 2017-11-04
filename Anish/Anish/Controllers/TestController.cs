@@ -67,5 +67,43 @@ namespace Anish.Controllers
             return View(employeeVmList);
         }
 
+
+        public ActionResult Index1()
+        {
+            var db = new AnishEntities1();
+            List<Employee> emList = db.Employees.ToList();
+            var emVmList = emList.Select(x => new EmployeeViewModel
+            {
+                Name = x.Name,
+                EmployeeId = x.EmployeeId,
+            }).ToList();
+            
+            return View(emVmList);
+        }
+
+
+        public ActionResult EmployeeDetails(int id)
+        {
+            var db = new AnishEntities1();
+            var em = db.Employees.SingleOrDefault(x => x.EmployeeId == id);
+            EmployeeViewModel vm = new EmployeeViewModel();
+
+            vm.Name = em.Name;
+            vm.Address = em.Address;
+            vm.DepartmentName = em.Department1.Name;
+
+            return View(em);
+        }
+
+        public ActionResult Helper()
+        {
+            var db = new AnishEntities1();
+            var list = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(list, "Id", "Name");
+
+            return View();
+        }
+
+
     }
 }

@@ -312,6 +312,9 @@
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\Map.cshtml" />
     <Content Include="Views\Test\MultipleTable.cshtml" />
+    <Content Include="Views\Test\EmployeeDetails.cshtml" />
+    <Content Include="Views\Test\Index1.cshtml" />
+    <Content Include="Views\Test\Helper.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

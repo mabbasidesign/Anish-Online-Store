@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Anish.Models.EmployeeViewModel>
+
+@{
+    ViewBag.Title = "Index1";
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<div class="container" style="width:80%;margin-top:40px;">
+    <h2>Index1</h2>
+
+    @if (Model != null)
+    {
+        <ul class="list-group">
+            @foreach (var item in Model)
+            {
+                <li class="list-group-item">
+                    @Html.ActionLink(item.Name, "EmployeeDetails", new { id = item.EmployeeId}, new { @class="btn btn-block btn-primary"})
+                </li>
+            }
+        </ul>
+    }
+
+</div>
