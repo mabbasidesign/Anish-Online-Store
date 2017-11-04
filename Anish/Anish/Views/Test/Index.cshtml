@@ -1,52 +1,31 @@
-﻿@model IEnumerable<Anish.Models.Employee>
+﻿@model Anish.Models.EmployeeViewModel
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Helper";
     Layout = null;
 }
-
-<h1> @ViewBag.Name </h1>
-
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 
-<div class="container" style="width:60%;margin-top:20px">
-    <table class="table table-hover">
-        <tr>
-            <td>Id</td>
-            <td>Name</td>
-            <td>Department</td>
-        </tr>
-        <tbody>
-            @if (Model != null)
-            {
-                foreach (var item in Model)
-                {
-                    <tr>
-                        <td>@item.EmployeeId</td>
-                        <td>@item.Name</td>
-                        <td>@item.Department</td>
-                    </tr>
-                }
-            }
+<div class="container" style="width:50%;margin-top:40px;">
+    <h2>Helper</h2>
+    @using (Html.BeginForm("SaveRecord", "Test", FormMethod.Post))
+    {
+        @Html.DropDownListFor(model => model.EmployeeId,
+    ViewBag.DepartmentList as SelectList, "--select--", new { @class = "form-control" })
 
-        </tbody>
-    </table>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+
+        <div class="checkbox">
+            <lable>
+                @Html.CheckBox("Remember")
+                check out this
+            </lable>
+        </div>
+
+        <button type="submit" value="submit" class="btn btn-block btn-primary">Submit</button>
+    }
+
+
 
 </div>
-@*<table class="table table-striped">
-    <tr>
-        <th>List Name</th>
-    </tr>
-    <tbody>
-        @if (ViewBag.NameList != null)
-        {
-            foreach (var item in ViewBag.NameList)
-            {
-                <tr>
-                    <td>@item</td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>*@
-

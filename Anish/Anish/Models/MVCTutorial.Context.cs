@@ -13,10 +13,10 @@ namespace Anish.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AnishEntities1 : DbContext
+    public partial class MVCTEntities : DbContext
     {
-        public AnishEntities1()
-            : base("name=AnishEntities1")
+        public MVCTEntities()
+            : base("name=MVCTEntities")
         {
         }
     
@@ -27,5 +27,6 @@ namespace Anish.Models
     
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Site> Sites { get; set; }
     }
 }
