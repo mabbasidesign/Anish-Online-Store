@@ -2,16 +2,16 @@
 
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Helper";
+    ViewBag.Title = "InserDataIntoMultipleTable";
     Layout = null;
 }
 
 <div class="container" style="width:50%;margin-top:40px;">
     <h2>Helper</h2>
-    @using (Html.BeginForm("Index", "Test", FormMethod.Post))
+    @using (Html.BeginForm("InserDataIntoMultipleTable", "Test", FormMethod.Post))
     {
         @Html.DropDownListFor(model => model.EmployeeId, ViewBag.DepartmentList as SelectList, "--select--", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.EmployeeId, "", new {@class="error"})
+        @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "error" })
 
         @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
         @Html.ValidationMessageFor(model => model.Name, "", new { @class = "error" })
@@ -19,6 +19,8 @@
         @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
         @Html.ValidationMessageFor(model => model.Address, "", new { @class = "error" })
 
+        @Html.TextBoxFor(m => m.SiteName, new { @class = "form-control", @placeholder = "Site Name" })
+        @Html.ValidationMessageFor(model => model.SiteName, "", new { @class = "error" })
 
         <div class="checkbox">
             <lable>
