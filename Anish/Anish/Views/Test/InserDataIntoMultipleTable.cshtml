@@ -8,8 +8,9 @@
 
 <div class="container" style="width:50%;margin-top:40px;">
     <h2>Helper</h2>
-    @using (Html.BeginForm("InserDataIntoMultipleTable", "Test", FormMethod.Post))
-    {
+    @*@using (Html.BeginForm("InserDataIntoMultipleTable", "Test", FormMethod.Post))
+        {*@
+    <form id="myForm">
         @Html.DropDownListFor(model => model.EmployeeId, ViewBag.DepartmentList as SelectList, "--select--", new { @class = "form-control" })
         @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "error" })
 
@@ -29,11 +30,39 @@
             </lable>
         </div>
 
-        <button type="submit" value="submit" class="btn btn-block btn-primary">Submit</button>
-    }
+        <button id="btnSubmit" type="reset" value="submit" class="btn btn-block btn-primary">Submit</button>
 
+    </form>
 </div>
+
+<div style="text-align:center;display:none" id="loader">
+    @*<img src="~/Content/Preloader_6.gif" width="" />*@
+    <img src="~/Content/35.gif" width="100"/>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+            debugger
+            $("#loader").show();
+            var data = $("#myForm").serialize();
+            $.ajax({
+
+                type: "POST",
+                url: "/Test/InserDataIntoMultipleTable",
+                data: data,
+                success: function (response) {
+                    $("#loader").hide();
+                    //alert("you are done");
+                }
+            })
+
+        })
+
+    });
+</script>
 
 <script src="~/Scripts/jquery.validate.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-<script src="~/Scripts/jquery-1.10.2.js"></script>
