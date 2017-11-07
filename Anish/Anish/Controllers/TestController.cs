@@ -85,5 +85,33 @@ namespace Anish.Controllers
             return View(model);
         }
 
+        //[HttpPost]
+        public ActionResult Pop15(EmployeeViewModel model)
+        {
+            var db = new MVCTEntities();
+            var list = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
+
+            var emp = new Employee();
+            emp.Name = model.Name;
+            emp.Address = model.Address;
+            emp.DepartmentId = model.DepartmentId;
+
+            db.Employees.Add(emp);
+            //db.SaveChanges();
+
+            int latestEmpId = emp.EmployeeId;
+            var site = new Site();
+            site.SiteName = model.SiteName;
+            site.EmployeeId = latestEmpId;
+
+            db.Sites.Add(site);
+            //db.SaveChanges();
+
+            return View(model);
+        }
+
+
+
     }
 }

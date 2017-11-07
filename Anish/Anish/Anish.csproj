@@ -316,6 +316,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Test\Index.cshtml" />
     <Content Include="Views\Test\InserDataIntoMultipleTable.cshtml" />
+    <Content Include="Views\Test\Pop15.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

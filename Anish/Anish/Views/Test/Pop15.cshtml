@@ -1,0 +1,86 @@
+﻿@model Anish.Models.EmployeeViewModel
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link href="~/Content/Site.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Pop15";
+    Layout = null;
+}
+
+<div class="container" style="width:50%;margin-top:40px;">
+    <h2>Helper</h2>
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> Open Model </a>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title">Techno Tip</h3>
+                </div>
+
+                <div class="modal-body">
+                    
+
+     <form id="myForm">
+    @Html.DropDownListFor(model => model.EmployeeId, ViewBag.DepartmentList as SelectList, "--select--", new { @class = "form-control" }) @Html.ValidationMessageFor(model => model.EmployeeId, "", new { @class = "error" })
+
+    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+
+    @Html.TextBoxFor(m => m.Address, new { @class = "form-control", @placeholder = "Address" })
+
+    @Html.TextBoxFor(m => m.SiteName, new { @class = "form-control", @placeholder = "Site Name" })
+
+     </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Cancel</a>
+                    <input type="reset" value="submit" class="btn btn-success" id="btnSubmit" />
+                    @*<a href="#" onclick="saveForm()" ></a>*@
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<div style="text-align:center;display:none" id="loader">
+    <img src="~/Content/35.gif" width="100" />
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        $("#btnSubmit").click(function () {
+
+            $("#loader").show();
+            debugger
+
+            var data = $("#myForm").serialize();
+            $.ajax({
+
+                type: "POST",
+                url: "/Test/Pop15",
+                data: data,
+                success: function (response) {
+                    $("#loader").hide();
+                    $("#myModal").modal("hide");
+                    
+                }
+            })
+
+        })
+
+    });
+</script>
+
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
