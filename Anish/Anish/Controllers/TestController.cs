@@ -12,7 +12,7 @@ namespace Anish.Controllers
 
         public ActionResult Index()
         {
-            var db = new MVCTEntities();
+            var db = new MVCTutorialEntities();
             var list = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
 
@@ -27,7 +27,7 @@ namespace Anish.Controllers
 
             }
 
-            var db = new MVCTEntities();
+            var db = new MVCTutorialEntities();
             var list = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
 
@@ -39,7 +39,7 @@ namespace Anish.Controllers
         {
             try
             {
-                var db = new MVCTEntities();
+                var db = new MVCTutorialEntities();
                 var em = new Employee();
 
                 em.Name = model.Name;
@@ -62,7 +62,7 @@ namespace Anish.Controllers
         //[HttpPost]
         public ActionResult InserDataIntoMultipleTable(EmployeeViewModel model)
         {
-            var db = new MVCTEntities();
+            var db = new MVCTutorialEntities();
             var list = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
 
@@ -88,7 +88,7 @@ namespace Anish.Controllers
         //[HttpPost]
         public ActionResult Pop15(EmployeeViewModel model)
         {
-            var db = new MVCTEntities();
+            var db = new MVCTutorialEntities();
             var list = db.Departments.ToList();
             ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
 
@@ -111,6 +111,12 @@ namespace Anish.Controllers
             return View(model);
         }
 
+        //public ActionResult DeleteEmployee()
+        //{
+        //    var db = new MVCTEntities(int EmployeeId);
+
+        //    return View();
+        //}
 
 
     }

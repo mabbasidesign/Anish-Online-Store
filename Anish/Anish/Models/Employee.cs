@@ -18,6 +18,7 @@ namespace Anish.Models
         public string Name { get; set; }
         public Nullable<int> DepartmentId { get; set; }
         public string Address { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     
         public virtual Department Department { get; set; }
     }

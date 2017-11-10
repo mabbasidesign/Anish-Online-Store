@@ -19,8 +19,11 @@ namespace Anish.Models
         [Required(ErrorMessage = "Enter Address")]
         public string Address { get; set; }
 
-        //custom
+        public Nullable<bool> IsDeleted { get; set; }
+
+        //Custom attribute
         public string DepartmentName { get; set; }
+        public bool Remember { get; set; }
         public string SiteName { get; set; }
 
     }

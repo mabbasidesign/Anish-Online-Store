@@ -13,10 +13,10 @@ namespace Anish.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MVCTEntities : DbContext
+    public partial class MVCTutorialEntities : DbContext
     {
-        public MVCTEntities()
-            : base("name=MVCTEntities")
+        public MVCTutorialEntities()
+            : base("name=MVCTutorialEntities")
         {
         }
     
