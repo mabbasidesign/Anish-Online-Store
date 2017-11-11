@@ -11,7 +11,15 @@
 
 <div class="container" style="width:50%;margin-top:40px;">
 
-    @Html.Partial("_LoginPartial")
+    @*@Html.Partial("_LoginPartial")*@
+
+    @{
+        Html.RenderPartial("_LoginPartial", Model);
+    }
+
+    @{
+        Html.RenderAction("ShowPartial");
+    }
 
     <table class="table table-responsive">
         <tr>
@@ -49,7 +57,7 @@
 
                 <div class="modal-body">
                     <h4>Are you sure you wnt to delete this?</h4>
-                    <div  id ="loader"style="text-align:center;display:none" widrh="150">
+                    <div id="loader" style="text-align:center;display:none" widrh="150">
                         <img src="~/Content/35.gif" />
                     </div>
                 </div>

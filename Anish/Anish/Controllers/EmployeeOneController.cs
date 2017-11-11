@@ -44,5 +44,11 @@ namespace Anish.Controllers
         }
 
 
+        public ActionResult ShowPartial()
+        {
+
+            return View("Partial1");
+        }
+
     }
 }
