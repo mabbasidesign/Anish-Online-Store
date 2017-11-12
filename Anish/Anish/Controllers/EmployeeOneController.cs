@@ -44,10 +44,23 @@ namespace Anish.Controllers
         }
 
 
-        public ActionResult ShowPartial()
+        public ActionResult ShowEmployee(int employeeId)
         {
+            var db = new MVCTutorialEntities();
 
-            return View("Partial1");
+            var listEmp = db.Employees
+                .Where(e => e.IsDeleted == false && e.EmployeeId == employeeId)
+                .Select(x => new EmployeeViewModel
+                {
+                    DepartmentId = x.EmployeeId,
+                    Name = x.Name,
+                    Address = x.Address,
+                    IsDeleted = x.IsDeleted,
+                    DepartmentName = x.Department.DepartmentName,
+                }).ToList();
+            ViewBag.EmployeeList = listEmp;
+
+            return PartialView("Partial1");
         }
 
     }

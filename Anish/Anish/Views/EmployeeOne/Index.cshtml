@@ -13,13 +13,13 @@
 
     @*@Html.Partial("_LoginPartial")*@
 
-    @{
+    @*@{
         Html.RenderPartial("_LoginPartial", Model);
-    }
+    }*@
 
-    @{
-        Html.RenderAction("ShowPartial");
-    }
+    @*@{
+        Html.RenderAction("ShowEmployee");
+    }*@
 
     <table class="table table-responsive">
         <tr>
@@ -39,6 +39,7 @@
                         <td>@item.Address</td>
                         <td>@item.DepartmentName</td>
                         <td><a href="#" class="btn btn-danger" onclick="confirmDelete(@item.EmployeeId)"><i class="glyphicon glyphicon-trash"></i></a></td>
+                        <td><a href="#" class="btn btn-danger" onclick="ShowEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-eye-close"></i></a></td>
                     </tr>
                 }
             }
@@ -55,11 +56,7 @@
                     <h3 class="modal-title">Delete Employee</h3>
                 </div>
 
-                <div class="modal-body">
-                    <h4>Are you sure you wnt to delete this?</h4>
-                    <div id="loader" style="text-align:center;display:none" widrh="150">
-                        <img src="~/Content/35.gif" />
-                    </div>
+                <div class="modal-body" id="myModalBodyDiv">
                 </div>
 
                 <div class="modal-footer">
@@ -84,6 +81,25 @@
         $("#myModal").modal("show");
     }
 
+
+    var ShowEmployee = function(employeeId){
+    
+        $.ajax({
+
+            type: "POST",
+            url: "/EmployeeOne/ShowEmployee",
+            data: { EmployeeId: employeeId },
+            success: function (response) {
+               
+                $("#myModalBodyDiv").html(response);
+                $("#myModal").modal("show");
+
+            }
+        })
+   
+    }
+
+
     var deleteEmploye = function () {
         $("#loader").show();
 
@@ -101,6 +117,7 @@
             }
         });
     }
+
 
 </script>
 

@@ -1,9 +1,32 @@
-﻿
+﻿@model Anish.Models.EmployeeViewModel
+
 @{
     ViewBag.Title = "Partial1";
 }
 
 <div class="jumbotron">
-    <h1>I am inside Partial1</h1>
+    <h3>Partil 1</h3>
 </div>
+
+<table class="table table-bordered">
+    @if (ViewBag.EmployeeList != null)
+    {
+
+        foreach (var item in ViewBag.EmployeeList)
+        {
+            <tr>
+                <td><b>Name</b></td>
+                <td>@item.Name</td>
+            </tr>
+            <tr>
+                <td><b>DepartmentName</b></td>
+                <td>@item.DepartmentName</td>
+            </tr>
+            <tr>
+                <td><b>Address</b></td>
+                <td>@item.Address</td>
+            </tr>
+        }
+    }
+</table>
 
