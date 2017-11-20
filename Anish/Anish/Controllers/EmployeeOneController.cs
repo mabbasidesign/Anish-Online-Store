@@ -63,5 +63,27 @@ namespace Anish.Controllers
             return PartialView("Partial1");
         }
 
+
+        public ActionResult AddEditEmployee(int employeeId)
+        {
+            var db = new MVCTutorialEntities();
+            var list = db.Departments.ToList();
+            ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
+
+            var model = new EmployeeViewModel();
+
+            if(employeeId > 0)
+            {
+                var em = db.Employees.SingleOrDefault(e => e.EmployeeId == employeeId && e.IsDeleted == false);
+                model.EmployeeId = em.EmployeeId;
+                model.Name = em.Name;
+                model.DepartmentId = em.DepartmentId;
+            }
+            
+            return PartialView("Partial2");
+        }
+
+
+
     }
 }

@@ -320,6 +320,7 @@
     <Content Include="Views\Test\Pop15.cshtml" />
     <Content Include="Views\EmployeeOne\Index.cshtml" />
     <Content Include="Views\EmployeeOne\Partial1.cshtml" />
+    <Content Include="Views\EmployeeOne\Partial2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
