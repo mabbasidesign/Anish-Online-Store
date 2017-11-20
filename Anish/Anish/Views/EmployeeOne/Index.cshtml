@@ -40,6 +40,7 @@
                         <td>@item.DepartmentName</td>
                         <td><a href="#" class="btn btn-danger" onclick="confirmDelete(@item.EmployeeId)"><i class="glyphicon glyphicon-trash"></i></a></td>
                         <td><a href="#" class="btn btn-danger" onclick="ShowEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-eye-close"></i></a></td>
+                        <td><a href="#" class="btn btn-danger" onclick="AddEditEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-pencil"></i></a></td>
                     </tr>
                 }
             }
@@ -57,6 +58,28 @@
                 </div>
 
                 <div class="modal-body" id="myModalBodyDiv">
+                </div>
+
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Camcel</a>
+                    <a href="#" class="btn btn-success" onclick="deleteEmploye()">Confirm</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="myModal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h3 class="modal-title">Delete Employee</h3>
+                </div>
+
+                <div class="modal-body" id="myModalBodyDiv1">
                 </div>
 
                 <div class="modal-footer">
@@ -91,8 +114,8 @@
             data: { EmployeeId: employeeId },
             success: function (response) {
                
-                $("#myModalBodyDiv").html(response);
-                $("#myModal").modal("show");
+                $("#myModalBodyDiv1").html(response);
+                $("#myModal1").modal("show");
 
             }
         })
@@ -116,6 +139,15 @@
 
             }
         });
+    }
+
+
+    var AddEditEmployee = function(employeeId){
+
+        var url = "/EmployeeOne/AddEditEmployee?EmployeeId"+employeeId
+        $("#hiddenEmployeeId").val(EmployeeId);
+        $("#myModal").modal("show");
+
     }
 
 

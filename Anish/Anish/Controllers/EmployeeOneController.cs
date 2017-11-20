@@ -17,7 +17,7 @@ namespace Anish.Controllers
                 .Where(e => e.IsDeleted == false)
                 .Select(x => new EmployeeViewModel
                 {
-                    DepartmentId = x.EmployeeId,
+                    EmployeeId = x.EmployeeId,
                     Name = x.Name,
                     Address = x.Address,
                     IsDeleted = x.IsDeleted,
@@ -52,7 +52,7 @@ namespace Anish.Controllers
                 .Where(e => e.IsDeleted == false && e.EmployeeId == employeeId)
                 .Select(x => new EmployeeViewModel
                 {
-                    DepartmentId = x.EmployeeId,
+                    EmployeeId = x.EmployeeId,
                     Name = x.Name,
                     Address = x.Address,
                     IsDeleted = x.IsDeleted,
