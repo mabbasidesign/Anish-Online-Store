@@ -77,10 +77,11 @@ namespace Anish.Controllers
                 var em = db.Employees.SingleOrDefault(e => e.EmployeeId == employeeId && e.IsDeleted == false);
                 model.EmployeeId = em.EmployeeId;
                 model.Name = em.Name;
+                model.Address = em.Address;
                 model.DepartmentId = em.DepartmentId;
             }
             
-            return PartialView("Partial2");
+            return PartialView("Partial2", model);
         }
 
 

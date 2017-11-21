@@ -39,8 +39,8 @@
                         <td>@item.Address</td>
                         <td>@item.DepartmentName</td>
                         <td><a href="#" class="btn btn-danger" onclick="confirmDelete(@item.EmployeeId)"><i class="glyphicon glyphicon-trash"></i></a></td>
-                        <td><a href="#" class="btn btn-danger" onclick="ShowEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-eye-close"></i></a></td>
-                        <td><a href="#" class="btn btn-danger" onclick="AddEditEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-pencil"></i></a></td>
+                        <td><a href="#" class="btn btn-success" onclick="ShowEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-eye-close"></i></a></td>
+                        <td><a href="#" class="btn btn-success" onclick="AddEditEmployee(@item.EmployeeId)"><i class="glyphicon glyphicon-pencil"></i></a></td>
                     </tr>
                 }
             }
@@ -82,10 +82,6 @@
                 <div class="modal-body" id="myModalBodyDiv1">
                 </div>
 
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-default" data-dismiss="modal">Camcel</a>
-                    <a href="#" class="btn btn-success" onclick="deleteEmploye()">Confirm</a>
-                </div>
 
             </div>
         </div>
@@ -114,12 +110,11 @@
             data: { EmployeeId: employeeId },
             success: function (response) {
                
-                $("#myModalBodyDiv1").html(response);
-                $("#myModal1").modal("show");
+                $("#myModalBodyDiv").html(response);
+                $("#myModal").modal("show");
 
             }
-        })
-   
+        });
     }
 
 
@@ -144,11 +139,19 @@
 
     var AddEditEmployee = function(employeeId){
 
-        var url = "/EmployeeOne/AddEditEmployee?EmployeeId"+employeeId
-        $("#hiddenEmployeeId").val(EmployeeId);
-        $("#myModal").modal("show");
-
+        var url = "/EmployeeOne/AddEditEmployee?EmployeeId="+employeeId
+        $("#myModalBodyDiv1").load(url, function(){
+            $("#myModal1").modal("show");
+        });
     }
+
+
+    //var AddEditEmployee=function(employeeId){
+    //    var url="/Test/AddEditEmployee?EmployeeId="+employeeId;
+    //    $("#myModalBodyDiv1").load(url,function(){
+    //        $("#myModal1").modal("show");
+    //    })
+    //}
 
 
 </script>
