@@ -28,6 +28,49 @@ namespace Anish.Controllers
             return View();
         }
 
+        /*Add Edit Employee*/
+        [HttpPost]
+        public ActionResult Index(EmployeeViewModel model)
+        {
+            try
+            {
+                var db = new MVCTutorialEntities();
+                var list = db.Departments.ToList();
+                ViewBag.DepartmentList = new SelectList(list, "DepartmentId", "DepartmentName");
+
+                if(model.EmployeeId > 0)
+                {
+                    //Insert
+                    var em = db.Employees.SingleOrDefault(e => e.EmployeeId == model.EmployeeId && e.IsDeleted == false);
+                    em.Name = model.Name;
+                    em.Address = model.Address;
+                    em.DepartmentId = model.DepartmentId;
+                    db.SaveChanges();
+                }
+
+                else
+                {
+                    //Update
+                    var emp = new Employee();
+                    emp.Name = model.Name;
+                    emp.Address = model.Address;
+                    emp.DepartmentId = model.DepartmentId;
+                    emp.IsDeleted = false;
+                    db.Employees.Add(emp);
+                    db.SaveChanges();
+                }
+
+            return View(model);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
         public JsonResult DeleteEmployee(int EmployeeId)
         {
             bool result = false;
