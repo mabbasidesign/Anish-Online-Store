@@ -198,6 +198,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DivideController.cs" />
     <Compile Include="Controllers\EmployeeOneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -321,6 +322,7 @@
     <Content Include="Views\EmployeeOne\Index.cshtml" />
     <Content Include="Views\EmployeeOne\Partial1.cshtml" />
     <Content Include="Views\EmployeeOne\Partial2.cshtml" />
+    <Content Include="Views\Divide\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
