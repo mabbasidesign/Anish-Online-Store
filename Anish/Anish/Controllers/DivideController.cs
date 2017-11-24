@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Anish.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,30 @@ namespace Anish.Controllers
         }
 
         public ActionResult Registeration()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registeration(RegisterationViewModel model)
+        {
+            var db = new MVCTutorialEntities();
+            var siteUser = new SiteUser();
+
+            siteUser.UserName = model.UserName;
+            siteUser.Password = model.Password;
+            siteUser.Address = model.Address;
+            siteUser.EmailId = model.EmailId;
+            siteUser.RoleId = 3;
+
+            db.SiteUsers.Add(siteUser);
+            db.SaveChanges();
+
+            return View();
+        }
+
+        public ActionResult Login()
         {
 
             return View();
