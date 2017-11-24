@@ -5,11 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d15e890e991d4661b65056dcad6682cf" Name="Diagram1">
-        <EntityTypeShape EntityType="MVCT.Department" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCT.Employee" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MVCT.Site" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCT.Department" Width="1.5" PointX="0.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCT.Employee" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MVCT.Site" Width="1.5" PointX="0.625" PointY="3" IsExpanded="true" />
         <AssociationConnector Association="MVCT.FK_Employee_Department" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MVCT.SiteUser" Width="1.5" PointX="3.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MVCT.SiteUser" Width="1.5" PointX="4.625" PointY="2.375" />
+        <EntityTypeShape EntityType="MVCT.UserRole" Width="1.5" PointX="2.375" PointY="3" />
+        <AssociationConnector Association="MVCT.FK_SiteUser_UserRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
