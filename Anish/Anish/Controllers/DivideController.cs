@@ -50,11 +50,11 @@ namespace Anish.Controllers
         {
             var db = new MVCTutorialEntities();
             var result = "fail";
-            var user = db.SiteUsers.SingleOrDefault(u => u.EmailId == model.EmailId && u.Password == model.Password);
+            var user = db.SiteUsers.SingleOrDefault(u => u.UserName == model.UserName && u.Password == model.Password);
             if(user != null)
             {
-                Session["userId"] = user.UserId;
-                Session["userName"] = user.UserName;
+                Session["UserId"] = user.UserId;
+                Session["UserName"] = user.UserName;
             }
             if(user.RoleId == 3)
             {
@@ -67,6 +67,15 @@ namespace Anish.Controllers
 
             return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+
+            return RedirectToAction("Login");
+        }
+
 
     }
 }
