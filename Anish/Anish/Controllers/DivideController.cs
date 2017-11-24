@@ -45,5 +45,28 @@ namespace Anish.Controllers
             return View();
         }
 
+        [HttpPost]
+        public JsonResult LoginUser(RegisterationViewModel model)
+        {
+            var db = new MVCTutorialEntities();
+            var result = "fail";
+            var user = db.SiteUsers.SingleOrDefault(u => u.EmailId == model.EmailId && u.Password == model.Password);
+            if(user != null)
+            {
+                Session["userId"] = user.UserId;
+                Session["userName"] = user.UserName;
+            }
+            if(user.RoleId == 3)
+            {
+                result =  "GeneralUser";
+            }
+            else if(user.RoleId == 1)
+            {
+                result = "Admin";
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

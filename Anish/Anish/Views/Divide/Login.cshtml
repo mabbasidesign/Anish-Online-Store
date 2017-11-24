@@ -78,12 +78,17 @@
 
         $.ajax({
             type: "POST",
-            url: "/Divide/Login",
+            url: "/Divide/LoginUser",
             data: data,
             success: function(response) {
 
-                //alert("you are successfuly registered");
-                $("#alert").css('display', 'block');
+                if (respond == "fail") {
+                    window.location.href = "/Divide/Registeration"
+                }
+                else if {
+
+                }
+                //$("#alert").css('display', 'block');
             }
         });
     }
