@@ -28,5 +28,6 @@ namespace Anish.Models
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<Site> Sites { get; set; }
+        public virtual DbSet<SiteUser> SiteUsers { get; set; }
     }
 }
