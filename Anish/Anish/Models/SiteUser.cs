@@ -19,5 +19,8 @@ namespace Anish.Models
         public string EmailId { get; set; }
         public string Password { get; set; }
         public string Address { get; set; }
+        public Nullable<int> RoleId { get; set; }
+    
+        public virtual UserRole UserRole { get; set; }
     }
 }

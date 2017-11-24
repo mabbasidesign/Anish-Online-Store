@@ -13,5 +13,12 @@ namespace Anish.Controllers
         {
             return View();
         }
+
+        public ActionResult Registeration()
+        {
+
+            return View();
+        }
+
     }
 }
