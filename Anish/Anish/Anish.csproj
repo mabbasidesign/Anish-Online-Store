@@ -334,6 +334,7 @@
     <Content Include="Views\EmployeeOne\Partial2.cshtml" />
     <Content Include="Views\Divide\Index.cshtml" />
     <Content Include="Views\Divide\Registeration.cshtml" />
+    <Content Include="Views\Divide\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
