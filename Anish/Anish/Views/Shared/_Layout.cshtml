@@ -54,7 +54,7 @@
                 @if (Session["UserId"] != null)
                 {
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Welcome: @(Session["UserName"]</a></li>
+                        <li><a href="#">Welcome: :@Session["UserName"] </a></li>
                         <li><a href="Divide/Logout">Logout</a></li>
 
                     </ul>
@@ -114,6 +114,8 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
     @RenderSection("scripts", required: false)
     @RenderSection("mySection", required: false)
 

@@ -51,16 +51,17 @@ namespace Anish.Controllers
             var db = new MVCTutorialEntities();
             var result = "fail";
             var user = db.SiteUsers.SingleOrDefault(u => u.UserName == model.UserName && u.Password == model.Password);
-            if(user != null)
+            if (user != null)
             {
                 Session["UserId"] = user.UserId;
                 Session["UserName"] = user.UserName;
             }
-            if(user.RoleId == 3)
+
+            if (user.RoleId == 3)
             {
-                result =  "GeneralUser";
+                result = "GeneralUser";
             }
-            else if(user.RoleId == 1)
+            else if (user.RoleId == 1)
             {
                 result = "Admin";
             }
