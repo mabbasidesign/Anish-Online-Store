@@ -144,8 +144,7 @@ namespace Anish.Controllers
             finalItem.ListB = List_B;
             finalItem.Age = 12;
 
-
-            return View();
+            return View(finalItem);
         }
 
     }

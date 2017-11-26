@@ -28,16 +28,32 @@
     </div>
 
     <div class="col-md-9">
+        <h3>@Model.Age</h3>
 
         @if (Model != null)
         {
-           <ul>
-
-           </ul>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    @foreach (var item in Model.ListA)
+                     {
+                        <li class="list-group-item">
+                            @item.Name
+                        </li>
+                     }
+                </ul>
+            </div>
 
             <div class="col-md-6">
-                Abbasi
+                <ul>
+                    @foreach (var item in Model.ListB)
+                     {
+                        <li class="list-group-item">
+                            @item.Country
+                        </li>
+                    }
+                </ul>
             </div>
+
         }
 
     </div>
