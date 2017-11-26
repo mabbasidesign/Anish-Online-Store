@@ -147,5 +147,17 @@ namespace Anish.Controllers
             return View(finalItem);
         }
 
+        public ActionResult SideMenu()
+        {
+
+            return PartialView ("SideMenu");
+        }
+
+        public ActionResult IndexMemu()
+        {
+
+            return View();
+        }
+
     }
 }
