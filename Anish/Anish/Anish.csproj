@@ -232,6 +232,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\ModelA.cs" />
+    <Compile Include="Models\ModelB.cs" />
+    <Compile Include="Models\ModelC.cs" />
     <Compile Include="Models\RegisterationViewModel.cs" />
     <Compile Include="Models\Site.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -336,6 +339,7 @@
     <Content Include="Views\Divide\Index.cshtml" />
     <Content Include="Views\Divide\Registeration.cshtml" />
     <Content Include="Views\Divide\Login.cshtml" />
+    <Content Include="Views\EmployeeOne\IndexA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

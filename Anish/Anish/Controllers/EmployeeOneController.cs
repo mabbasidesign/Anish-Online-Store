@@ -9,7 +9,6 @@ namespace Anish.Controllers
 {
     public class EmployeeOneController : Controller
     {
-
         public ActionResult Index()
         {
             var db = new MVCTutorialEntities();
@@ -127,7 +126,27 @@ namespace Anish.Controllers
             return PartialView("Partial2", model);
         }
 
+        public ActionResult IndexA()
+        {
+            List<ModelA> List_A = new List<ModelA>();
+            List<ModelB> List_B = new List<ModelB>();
 
+            List_A.Add(new ModelA { Name = "Mohsen" });
+            List_A.Add(new ModelA { Name = "Joahn" });
+            List_A.Add(new ModelA { Name = "Sara" });
+
+            List_B.Add(new ModelB { Country = "US" });
+            List_B.Add(new ModelB { Country = "UK" });
+            List_B.Add(new ModelB { Country = "CA" });
+
+            ModelC finalItem = new ModelC();
+            finalItem.ListA = List_A;
+            finalItem.ListB = List_B;
+            finalItem.Age = 12;
+
+
+            return View();
+        }
 
     }
 }
