@@ -158,6 +158,12 @@ namespace Anish.Controllers
             return PartialView("SideMenu", list);
         }
 
+        public ActionResult Display()
+        {
+
+            return View();
+        }
+
         
     }
 }
