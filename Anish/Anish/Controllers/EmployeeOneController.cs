@@ -149,15 +149,15 @@ namespace Anish.Controllers
 
         public ActionResult SideMenu()
         {
+            var list = new List<MenuItem>();
+            list.Add(new MenuItem { Link = "/EmployeeOne/IndexA", LinkName = "Index" });
+            list.Add(new MenuItem { Link = "/EmployeeOne/Index", LinkName = "Home" });
+            list.Add(new MenuItem { Link = "/Divide/login", LinkName = "LogIn" });
+            list.Add(new MenuItem { Link = "/Divide/regesteration", LinkName = "Registeration" });
 
-            return PartialView ("SideMenu");
+            return PartialView("SideMenu", list);
         }
 
-        public ActionResult IndexMemu()
-        {
-
-            return View();
-        }
-
+        
     }
 }
