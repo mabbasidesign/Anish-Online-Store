@@ -349,6 +349,7 @@
     <Content Include="Views\EmployeeOne\SideMenu.cshtml" />
     <Content Include="Views\EmployeeOne\Display.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\IndexSQL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
