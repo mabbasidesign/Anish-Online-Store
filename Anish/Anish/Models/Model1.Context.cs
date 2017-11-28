@@ -30,5 +30,6 @@ namespace Anish.Models
         public virtual DbSet<Site> Sites { get; set; }
         public virtual DbSet<SiteUser> SiteUsers { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<ImageStore> ImageStores { get; set; }
     }
 }

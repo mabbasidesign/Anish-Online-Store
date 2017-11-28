@@ -12,6 +12,7 @@
         <EntityTypeShape EntityType="MVCT.SiteUser" Width="1.5" PointX="4.625" PointY="2.375" />
         <EntityTypeShape EntityType="MVCT.UserRole" Width="1.5" PointX="2.375" PointY="3" />
         <AssociationConnector Association="MVCT.FK_SiteUser_UserRole" />
+        <EntityTypeShape EntityType="MVCT.ImageStore" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

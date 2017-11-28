@@ -1,4 +1,5 @@
-﻿
+﻿@model Anish.Models.ProductViewModel
+
 @{
     ViewBag.Title = "Display";
 }
@@ -27,10 +28,11 @@
                 <a href="#" onclick="ClearPreview()"><i class="glyphicon glyphicon-trash"></i></a>
                 <span id="description"></span>
             </div>
+            <a href="#" class="btn btn-default" onclick="Uploadimage()">Upload</a>
         </div>
 
     </div>
-
+        <div id="uploadImage" class="col-md-2 thumbnail"></div>
     </div>
 
 </div>
@@ -38,20 +40,17 @@
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script>
 
-    $(document).ready(function () {
+        $(document).ready(function () {
 
-        $("#imageBrowes").change(function () {
+            $("#imageBrowes").change(function () {
 
-            var File = this.files;
+                var File = this.files;
 
-            if (File && File[0]) {
-                ReadImage(File[0]);
-            }
-
-        })
-
-
-    })
+                if (File && File[0]) {
+                    ReadImage(File[0]);
+                }
+            });
+        });
 
 
     var ReadImage = function (file) {
@@ -78,11 +77,29 @@
         }
     }
 
-    var ClearPreview = function () {
-        $("#imageBrowes").val('');
-        $("#description").text('');
-        $("#imgPreview").hide();
+        var ClearPreview = function () {
+            $("#imageBrowes").val('');
+            $("#description").text('');
+            $("#imgPreview").hide();
+        }
 
-    }
+        var Uploadimage = $("#imageBrowes").get(0).files;
+        var data = new FormData;
+        data.append("ImageFile", File[0]);
+        data.append("ProductName", "Samsung8");
+
+        $.ajax({
+            type: "POST",
+            url: "/EmployeeOne/ImageUpload",
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                ClearPreview();
+                $("#uploadImage").append('<img src="/UploadedImage/' + response + '" class="img-responsive thumbnail"/>');
+            }
+
+        });
+       
 
     </script>
