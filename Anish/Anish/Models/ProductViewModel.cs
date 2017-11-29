@@ -13,5 +13,6 @@ namespace Anish.Models
         public Nullable<int> Price { get; set; }
         public Nullable<int> ImageId { get; set; }
         public HttpPostedFileWrapper ImageFile { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

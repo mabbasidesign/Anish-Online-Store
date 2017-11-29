@@ -350,6 +350,7 @@
     <Content Include="Views\EmployeeOne\Display.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\IndexSQL.cshtml" />
+    <Content Include="Views\Product\IndexURL.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
