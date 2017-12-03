@@ -1,5 +1,7 @@
 ﻿@model Anish.Models.CountryAndStateVM
 
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 @{
     ViewBag.Title = "Index";
 }
@@ -36,7 +38,20 @@
 <script>
 
     $(document).ready(function () {
-        $("CountryId").click(function () {
+        $("#CountryId").change(function () {
+
+            var countryId = $(this).val();
+            debugger;
+
+            $.ajax({
+                method: "POST",
+                url: "/Country/GetStateList?countryId=" + countryId,
+                contenType: "html",
+                success(response) {
+                    $("#StateId").empty();
+                    $("#StateId").append(response);
+                }
+            });
 
         });
     });

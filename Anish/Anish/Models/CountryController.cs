@@ -31,8 +31,9 @@ namespace Anish.Models
             var db = new MVCTutorialEntities();
 
             var stateList = db.Sstates.Where(e => e.CountryId == countryId).ToList();
+            ViewBag.StateOptions = new SelectList(stateList, "StateId", "StateName");
 
-            return View(stateList);
+            return PartialView("stateOptionPartial", stateList);
         }
     }
 }
