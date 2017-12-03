@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MVCT.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="DepartmentId" />
@@ -51,6 +58,14 @@
           <Property Name="Address" Type="nvarchar" MaxLength="50" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
+        <EntityType Name="Sstate">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryId" Type="int" />
+        </EntityType>
         <EntityType Name="UserRole">
           <Key>
             <PropertyRef Name="RoleID" />
@@ -70,6 +85,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Estate_Estate">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Sstate" Type="Self.Sstate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Sstate">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SiteUser_UserRole">
           <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
           <End Role="SiteUser" Type="Self.SiteUser" Multiplicity="*" />
@@ -83,15 +110,21 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MVCTStoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ImageStore" EntityType="Self.ImageStore" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sites" EntityType="Self.Sites" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SiteUser" EntityType="Self.SiteUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sstate" EntityType="Self.Sstate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Estate_Estate" Association="Self.FK_Estate_Estate">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Sstate" EntitySet="Sstate" />
           </AssociationSet>
           <AssociationSet Name="FK_SiteUser_UserRole" Association="Self.FK_SiteUser_UserRole">
             <End Role="UserRole" EntitySet="UserRole" />
@@ -156,6 +189,12 @@
             <End Role="SiteUser" EntitySet="SiteUsers" />
           </AssociationSet>
           <EntitySet Name="ImageStores" EntityType="MVCT.ImageStore" />
+          <EntitySet Name="Countries" EntityType="MVCT.Country" />
+          <EntitySet Name="Sstates" EntityType="MVCT.Sstate" />
+          <AssociationSet Name="FK_Estate_Estate" Association="MVCT.FK_Estate_Estate">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Sstate" EntitySet="Sstates" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="SiteUser">
           <Key>
@@ -199,6 +238,35 @@
           <Property Name="ImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Sstate" Relationship="MVCT.FK_Estate_Estate" FromRole="Country" ToRole="Sstate" />
+        </EntityType>
+        <EntityType Name="Sstate">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="Country" Relationship="MVCT.FK_Estate_Estate" FromRole="Sstate" ToRole="Country" />
+        </EntityType>
+        <Association Name="FK_Estate_Estate">
+          <End Type="MVCT.Country" Role="Country" Multiplicity="1" />
+          <End Type="MVCT.Sstate" Role="Sstate" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Sstate">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -261,6 +329,23 @@
                 <ScalarProperty Name="ImageByte" ColumnName="ImageByte" />
                 <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="MVCT.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sstates">
+            <EntityTypeMapping TypeName="MVCT.Sstate">
+              <MappingFragment StoreEntitySet="Sstate">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
