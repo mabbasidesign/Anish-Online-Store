@@ -204,6 +204,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -246,6 +247,7 @@
     <Compile Include="Models\ModelA.cs" />
     <Compile Include="Models\ModelB.cs" />
     <Compile Include="Models\ModelC.cs" />
+    <Compile Include="Models\MyShop.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Models\RegisterationViewModel.cs" />
     <Compile Include="Models\Site.cs">
@@ -362,8 +364,9 @@
     <Content Include="Views\Product\IndexURL.cshtml" />
     <Content Include="Views\Country\Index.cshtml" />
     <Content Include="Views\Shared\stateOptionPartial.cshtml" />
-    <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\SearchPartial.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

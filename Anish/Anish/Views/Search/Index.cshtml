@@ -26,8 +26,8 @@
 
     <div class="col-md-9">
 
-        @Html.TextBoxFor(m => m.Name, new { @class="form-control", @placeholder= "Search here"})
-
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Search here" })
+        <img src="~/Content/35.gif" id="loader" height="20" width="20" style="display:none;" />
         <table class="table table-striped">
             <tr>
                 <th>Name</th>
@@ -49,7 +49,7 @@
                     }
                 }
             </tbody>
-        </table>       
+        </table>
 
     </div>
 
@@ -59,7 +59,7 @@
 
     $(document).ready(function () {
         $("#Name").keydown(function () {
-
+            $("#loader").show();
             var searchtext = $(this).val();
             debugger;
 
@@ -68,6 +68,7 @@
                 url: "/Search/GetSerchRegard?SearchText=" + searchtext,
                 contenType: "html",
                 success(response) {
+                    $("#loader").hide();
                     $("#employeeRow").html(response);
                 }
             });

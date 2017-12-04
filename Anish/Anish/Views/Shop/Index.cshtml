@@ -1,0 +1,55 @@
+﻿@model Anish.Models.MyShop
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="panel panel-body">
+    <div class="col-md-3">
+        @{ Html.RenderAction("SideMenu", "EmployeeOne");}
+    </div>
+
+    <div class="col-md-9">
+        <div class="col-md-5">
+            <ul class="list-group">
+                <li class="list-group-item-heading list-group-item active">
+                    <h4 class="list-group-item-text">Available items</h4>
+                </li>
+                @foreach (var item in ViewBag.ItemList)
+                {
+                    <li class="list-group-item">
+                        <input type="checkbox" checked="@item.IsAvailable" id="Check_@item.ItemId" />
+                        <labl for="Check_@item.ItemId">@item.ItemName</labl>
+                    </li>
+                }
+                <li class="list-group-item">
+                    <a class="btn btn-success btn-block">Update Item</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#Name").keydown(function () {
+            $("#loader").show();
+            var searchtext = $(this).val();
+            debugger;
+            $.ajax({
+                method: "POST",
+                url: "/Search/GetSerchRegard?SearchText=" + searchtext,
+                contenType: "html",
+                success(response) {
+                    $("#loader").hide();
+                    $("#employeeRow").html(response);
+                }
+            });
+        });
+    });
+</script>
