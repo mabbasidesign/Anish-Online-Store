@@ -1,0 +1,78 @@
+﻿@model Anish.Models.EmployeeViewModel
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="panel panel-body">
+
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Director Message</h4>
+            </div>
+            <div class="panel-body">
+                <img src="~/Content/logo.png" class="img-responsive" />
+                <p>Hello welcome to my site</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-9">
+
+        @Html.TextBoxFor(m => m.Name, new { @class="form-control", @placeholder= "Search here"})
+
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Adress</th>
+                <th>View</th>
+            </tr>
+            <tbody id="employeeRow">
+                @if (ViewBag.EmployeeList != null)
+                {
+                    foreach (var item in ViewBag.EmployeeList)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.DepartmentName</td>
+                            <td>@item.Address</td>
+                            <td><a href="#"><i class="glyphicon glyphicon-eye-open"></i></a></td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>       
+
+    </div>
+
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#Name").keydown(function () {
+
+            var searchtext = $(this).val();
+            debugger;
+
+            $.ajax({
+                method: "POST",
+                url: "/Search/GetSerchRegard?SearchText=" + searchtext,
+                contenType: "html",
+                success(response) {
+                    $("#employeeRow").html(response);
+                }
+            });
+
+        });
+    });
+
+</script>

@@ -203,6 +203,7 @@
     <Compile Include="Controllers\EmployeeOneController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -212,7 +213,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CountryAndStateVM.cs" />
-    <Compile Include="Models\CountryController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Models\Department.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -361,6 +362,8 @@
     <Content Include="Views\Product\IndexURL.cshtml" />
     <Content Include="Views\Country\Index.cshtml" />
     <Content Include="Views\Shared\stateOptionPartial.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Shared\SearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,6 @@ namespace Anish.Controllers
 
         public ActionResult Registeration()
         {
-
             return View();
         }
 
