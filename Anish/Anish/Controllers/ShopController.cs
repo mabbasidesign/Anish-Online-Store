@@ -24,5 +24,18 @@ namespace Anish.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public JsonResult SaveItems(string ItemIds)
+        {
+            string[] arrayIds = ItemIds.Split(',');
+
+            foreach (string item in arrayIds)
+            {
+                var id = item;
+            }
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
